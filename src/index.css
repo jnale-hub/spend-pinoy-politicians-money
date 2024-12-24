@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.clickableBuyBtn {
+  @apply bg-gradient-to-b from-orange-400 to-orange-500 text-white;
+}
+
+.disabledBuyBtn {
+  @apply bg-gray-200 text-gray-700 cursor-not-allowed;
+}
+
+.clickableSellBtn {
+  @apply bg-gradient-to-b from-rose-500 to-rose-600 text-white;
+}
+
+.disabledSellBtn {
+  @apply bg-gray-200 text-gray-700 cursor-not-allowed;
+}
