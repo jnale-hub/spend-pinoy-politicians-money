@@ -11,12 +11,12 @@ const Input: React.FC<InputProps> = ({ value, id }) => {
   const { items, setItems } = useMoney();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputId = parseFloat(event.target.id); // Changing input value id
-    const index = items.findIndex((item) => item.id === inputId); // Find the data object with index
+    const inputId = parseFloat(event.target.id);
+    const index = items.findIndex((item) => item.id === inputId);
     const updatedItems = [...items];
 
-    let newValue = event.target.value; // Input value
-    updatedItems[index].quantity = newValue; // Update the item quantity in the object array
+    let newValue = event.target.value;
+    updatedItems[index].quantity = newValue;
 
     const totalItemPrice = updatedItems.reduce(
       // Calculate total price of selected items
@@ -57,7 +57,7 @@ const Input: React.FC<InputProps> = ({ value, id }) => {
       value={value}
       id={`${id}-Input`}
       type="number"
-      className="text-center border rounded-sm text-sm text-gray-600 font-light"
+      className="text-center border rounded-sm text-sm text-gray-600 font-light [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
       onChange={handleChange}
     />
   );
