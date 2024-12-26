@@ -1,6 +1,10 @@
 import { useMoney } from "../contexts/MoneyContext";
 import { useRemainingMoney } from "../contexts/RemainingMoneyContext";
 
+const buySound = new Audio('/audios/buy.mp3');
+const sellSound = new Audio('/audios/sell.mp3');
+
+
 interface ButtonProps {
   children: React.ReactNode;
   className: string;
@@ -13,24 +17,29 @@ const Button: React.FC<ButtonProps> = ({ children, className, id }) => {
   const { items, setItems } = useMoney();
   const { remainingMoney } = useRemainingMoney();
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const target = event.target as HTMLButtonElement;
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const target = event.target as HTMLButtonElement;
+  const buttonId = parseFloat(target.id);
+  const index = items.findIndex((item) => item.id === buttonId);
+  const updatedItem = [...items];
 
-    const buttonId = parseFloat(target.id);
+  if (target.innerHTML === "Buy") {
+    newValue = Number(updatedItem[index].quantity) + 1;
+    buySound.currentTime = 0;
+    buySound.play();
+  } else {
+    newValue = Number(updatedItem[index].quantity) > 0 
+      ? Number(updatedItem[index].quantity) - 1 
+      : 0;
+    if (Number(updatedItem[index].quantity) > 0) {
+      sellSound.currentTime = 0;
+      sellSound.play();
+    }
+  }
 
-    const index = items.findIndex((item) => item.id === buttonId);
-
-    const updatedItem = [...items];
-
-    target.innerHTML == "Buy"
-      ? (newValue = Number(updatedItem[index].quantity) + 1)
-      : Number(updatedItem[index].quantity) > 0
-      ? (newValue = Number(updatedItem[index].quantity) - 1)
-      : false;
-
-    updatedItem[index].quantity = newValue.toString();
-    setItems(updatedItem);
-  };
+  updatedItem[index].quantity = newValue.toString();
+  setItems(updatedItem);
+};
 
   let sellBtn = "disabledSellBtn";
 
