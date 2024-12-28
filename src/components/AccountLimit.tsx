@@ -27,13 +27,13 @@ const AccountLimit = () => {
   });
 
   return (
-    <div className="my-4 sticky top-0">
+    <div className="my-4 sticky top-0 z-50">
       <div className="relative w-full h-20 bg-slate-300 overflow-hidden rounded-lg shadow-md">
         <div
           className="absolute top-0 left-0 h-full bg-gradient-to-b from-orange-500 to-orange-600 transition-all duration-1000 ease-out rounded-lg shadow-md"
           style={{ width: `${remainingPercentage}%` }}
         ></div>
-        <div className="relative z-10 text-slate-50 p-6 text-4xl font-semibold text-center">
+        <div className="relative text-slate-50 p-6 text-4xl font-semibold text-center">
           <animated.span>
             {number.to((n) => formatMoney(n))}
           </animated.span>
