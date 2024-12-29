@@ -29,7 +29,7 @@ const Receipt = () => {
     <div
       className={`${
         isClosed ? "hidden" : ""
-      } mx-auto max-w-4xl bg-white rounded-lg shadow-md p-6 mt-4`}
+      } mx-auto max-w-4xl bg-white rounded-lg shadow-md p-6 mt-6`}
     >
       <h1 className="text-2xl font-bold mb-6 text-center">Your Receipt</h1>
       <div className="max-w-sm mx-auto">{list}</div>
