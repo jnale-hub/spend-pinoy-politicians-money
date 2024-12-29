@@ -11,7 +11,7 @@ const AccountLimit = () => {
   useEffect(() => {
     const totalExpense = items.reduce(
       (acc, currentValue) =>
-        acc + currentValue.price * Number(currentValue.quantity),
+        acc + currentValue.price * Number(currentValue. quantity),
       0
     );
     setRemainingMoney(TOTAL_MONEY - totalExpense);
