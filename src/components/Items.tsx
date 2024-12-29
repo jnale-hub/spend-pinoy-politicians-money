@@ -7,14 +7,14 @@ const Items = () => {
 
   return (
     <div className="relative grid gap-4 min-[560px]:grid-cols-2 md:grid-cols-3">
-      {items.map((item) => {
+      {items.map((item, index) => {
         const discountPercentage = item.oldPrice
           ? ((item.oldPrice - item.price) / item.oldPrice) * 100
           : 0;
 
         return (
           <div
-            key={item.id}
+            key={index}
             className="relative w-full bg-white rounded-lg shadow-md hover:shadow-lg grid"
           >
             <img
@@ -23,7 +23,7 @@ const Items = () => {
               className="mx-auto aspect-square object-contain w-full"
             />
             <div className="px-4 pt-4">
-              <h2 className="mb-2">{item.name}</h2>
+              <h2 className="">{item.name}</h2>
               <p className="text-orange-600 font-semibold text-2xl">
                 {formatMoney(item.price)}
               </p>
@@ -40,16 +40,16 @@ const Items = () => {
             </div>
             <div className="px-4 pb-4">
               <div className="grid grid-cols-2 gap-4">
-                <Button id={item.id} className="sellBtn">
-                  Sell
-                </Button>
-                <Button id={item.id} className="buyBtn">
+              <Button index={index} className="sellBtn">
+  Sell
+</Button>
+                <Button index={index} className="buyBtn">
                   Buy
                 </Button>
               </div>
             </div>
             {Number(item.quantity) > 0 && (
-              <div className="absolute top-2 right-2 bg-red-500 text-white rounded-full size-6 flex items-center justify-center text-xs">
+              <div className="absolute top-2 right-2 bg-red-500 text-white rounded-full size-6 flex items-center justify-center text-xs shadow-md">
                 {item.quantity}
               </div>
             )}

@@ -4,61 +4,54 @@ import { useRemainingMoney } from "../contexts/RemainingMoneyContext";
 const buySound = new Audio('/audios/buy.mp3');
 const sellSound = new Audio('/audios/sell.mp3');
 
-
 interface ButtonProps {
   children: React.ReactNode;
   className: string;
-  id: number;
+  index: number;
 }
 
 let newValue: number;
 
-const Button: React.FC<ButtonProps> = ({ children, className, id }) => {
+const Button: React.FC<ButtonProps> = ({ children, className, index }) => {
   const { items, setItems } = useMoney();
   const { remainingMoney } = useRemainingMoney();
 
-const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  const target = event.target as HTMLButtonElement;
-  const buttonId = parseFloat(target.id);
-  const index = items.findIndex((item) => item.id === buttonId);
-  const updatedItem = [...items];
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const updatedItems = [...items];
+    const target = event.target as HTMLButtonElement;
 
-  if (target.innerHTML === "Buy") {
-    newValue = Number(updatedItem[index].quantity) + 1;
-    buySound.currentTime = 0;
-    buySound.play();
-  } else {
-    newValue = Number(updatedItem[index].quantity) > 0 
-      ? Number(updatedItem[index].quantity) - 1 
-      : 0;
-    if (Number(updatedItem[index].quantity) > 0) {
-      sellSound.currentTime = 0;
-      sellSound.play();
+    if (target.innerHTML === "Buy") {
+      newValue = Number(updatedItems[index].quantity) + 1;
+      buySound.currentTime = 0;
+      buySound.play();
+    } else {
+      newValue = Number(updatedItems[index].quantity) > 0 
+        ? Number(updatedItems[index].quantity) - 1 
+        : 0;
+      if (Number(updatedItems[index].quantity) > 0) {
+        sellSound.currentTime = 0;
+        sellSound.play();
+      }
     }
-  }
 
-  updatedItem[index].quantity = newValue.toString();
-  setItems(updatedItem);
-};
+    updatedItems[index].quantity = newValue.toString();
+    setItems(updatedItems);
+  };
 
-  let sellBtn = "disabledSellBtn";
+  const sellBtnClass =
+    Number(items[index].quantity) > 0 ? "clickableSellBtn" : "disabledSellBtn";
 
-  if (Number(items[Number(id) - 1].quantity) > 0) {
-    sellBtn = "clickableSellBtn";
-  }
-
-  let buyBtn = "clickableBuyBtn";
-
-  if (remainingMoney < items[Number(id) - 1].price) {
-    buyBtn = "disabledBuyBtn";
-  }
+  const buyBtnClass =
+    remainingMoney >= items[index].price ? "clickableBuyBtn" : "disabledBuyBtn";
 
   return (
     <button
-      className={`${className === "buyBtn" ? buyBtn : sellBtn} px-4 py-1 rounded-sm font-semibold`}
+      className={`${
+        className === "buyBtn" ? buyBtnClass : sellBtnClass
+      } px-4 py-1 rounded-sm font-semibold`}
       onClick={handleClick}
-      id={`${id}-${className}`}
-      disabled={className === "buyBtn" && remainingMoney < items[Number(id) - 1].price}
+      id={`${index}-${className}`}
+      disabled={className === "buyBtn" && remainingMoney < items[index].price}
     >
       {children}
     </button>
