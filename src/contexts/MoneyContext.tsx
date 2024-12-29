@@ -2,8 +2,7 @@ import { createContext, useState, useContext } from "react";
 import data from "../data.json";
 
 export type Item = {
-  oldPrice: number;
-  id: number;
+  oldPrice?: number;
   name: string;
   price: number;
   img: string;
