@@ -8,7 +8,6 @@ import PageHeader from "./components/PageHeader";
 
 function App() {
   return (
-    <div className="bg-slate-100">
       <div className="max-w-4xl mx-auto">
         <RemainingMoneyProvider>
           <MoneyProvider>
@@ -19,7 +18,6 @@ function App() {
           </MoneyProvider>
         </RemainingMoneyProvider>
       </div>
-    </div>
   );
 }
 

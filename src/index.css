@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html, body {
+    @apply bg-slate-100;
+  }
+}
+
+
 .clickableBuyBtn {
   @apply bg-gradient-to-b from-orange-400 to-orange-500 text-white;
 }
