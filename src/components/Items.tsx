@@ -6,7 +6,7 @@ const Items = () => {
   const { items } = useMoney();
 
   return (
-    <div className="relative grid gap-4 min-[560px]:grid-cols-2 md:grid-cols-3">
+    <div className="relative grid sm:gap-4 gap-2 grid-cols-2 md:grid-cols-3 px-1 sm:px-4">
       {items.map((item, index) => {
         const discountPercentage = item.oldPrice
           ? ((item.oldPrice - item.price) / item.oldPrice) * 100
