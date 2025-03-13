@@ -6,7 +6,7 @@ export interface RemainingMoneyContextInterface {
   setRemainingMoney: (remainingMoney: number) => void;
 }
 
-export const TOTAL_MONEY = 38000000;
+export const TOTAL_MONEY = 3875696435;
 
 const RemainingMoneyContext = createContext<RemainingMoneyContextInterface>({
   remainingMoney: TOTAL_MONEY,
