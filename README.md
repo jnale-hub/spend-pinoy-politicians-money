@@ -6,6 +6,10 @@ Spend Pinoy Politicians' Money is an online simulation or game where players are
 
 You can access the live website [here](https://spend-pinoy-politicians-money.vercel.app/).
 
+<video autoplay loop muted playsinline>
+  <source src="public/demo.mov" type="video/mp4">
+</video>
+
 ## Possible Features & Contributions
 
 Help me implement these fun features!!!
