@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useMoney } from "../contexts/MoneyContext";
 import { useRemainingMoney } from "../contexts/RemainingMoneyContext";
 
@@ -10,48 +11,40 @@ interface ButtonProps {
   index: number;
 }
 
-let newValue: number;
-
 const Button: React.FC<ButtonProps> = ({ children, className, index }) => {
   const { items, setItems } = useMoney();
   const { remainingMoney } = useRemainingMoney();
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     const updatedItems = [...items];
-    const target = event.target as HTMLButtonElement;
-
-    if (target.innerHTML === "Buy") {
-      newValue = Number(updatedItems[index].quantity) + 1;
+    const target = event.currentTarget;
+    const currentQuantity = Number(updatedItems[index].quantity);
+    
+    if (target.innerText === "Buy") {
+      updatedItems[index].quantity = (currentQuantity + 1).toString();
       buySound.currentTime = 0;
       buySound.play();
-    } else {
-      newValue = Number(updatedItems[index].quantity) > 0 
-        ? Number(updatedItems[index].quantity) - 1 
-        : 0;
-      if (Number(updatedItems[index].quantity) > 0) {
-        sellSound.currentTime = 0;
-        sellSound.play();
-      }
+    } else if (currentQuantity > 0) {
+      updatedItems[index].quantity = (currentQuantity - 1).toString();
+      sellSound.currentTime = 0;
+      sellSound.play();
     }
 
-    updatedItems[index].quantity = newValue.toString();
     setItems(updatedItems);
-  };
+  }, [items, index, setItems]);
 
-  const sellBtnClass =
-    Number(items[index].quantity) > 0 ? "clickableSellBtn" : "disabledSellBtn";
-
-  const buyBtnClass =
-    remainingMoney >= items[index].price ? "clickableBuyBtn" : "disabledBuyBtn";
+  const isSellDisabled = Number(items[index].quantity) === 0;
+  const isBuyDisabled = remainingMoney < items[index].price;
 
   return (
     <button
-      className={`${
-        className === "buyBtn" ? buyBtnClass : sellBtnClass
-      } px-4 py-1 rounded-sm font-semibold`}
+      className={`${className} px-4 py-1 rounded-sm font-semibold ${
+        className === "buyBtn" ? (isBuyDisabled ? "disabledBuyBtn" : "clickableBuyBtn") 
+        : (isSellDisabled ? "disabledSellBtn" : "clickableSellBtn")
+      }`}
       onClick={handleClick}
       id={`${index}-${className}`}
-      disabled={className === "buyBtn" && remainingMoney < items[index].price}
+      disabled={className === "buyBtn" ? isBuyDisabled : isSellDisabled}
     >
       {children}
     </button>
