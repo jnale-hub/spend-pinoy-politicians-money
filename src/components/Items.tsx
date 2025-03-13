@@ -1,6 +1,6 @@
 import { useMoney } from "../contexts/MoneyContext";
-import Button from "./Button";
 import { formatMoney } from "../utils/formatMoney";
+import Button from "./Button";
 
 const Items = () => {
   const { items } = useMoney();
