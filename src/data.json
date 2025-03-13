@@ -1,87 +1,99 @@
-[
-  {
-    "name": "Jollibee Supermeal",
-    "price": 218,
-    "img": "/images/jollibee.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Coca-Cola Original Taste 1.5L",
-    "price": 75,
-    "oldPrice": 80,
-    "img": "/images/coke.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Pandesal (6 pcs)",
-    "price": 30,
-    "img": "/images/pandesal.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Gaming Setup",
-    "price": 68000,
-    "img": "/images/pc.png",
-    "quantity": "0"
-  },
-  {
-    "name": "iPhone 16 Pro Max",
-    "price": 89999,
-    "img": "/images/iphone.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Rice Cooker",
-    "price": 1200,
-    "img": "/images/rice-cooker.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Gasul Refill (11kg)",
-    "price": 980,
-    "img": "/images/gasul.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Electric Fan",
-    "price": 900,
-    "img": "/images/electric-fan.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Camella House and Lot, Cara Model",
-    "price": 6000000,
-    "img": "/images/house-and-lot.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Resort Property",
-    "price": 15000000,
-    "img": "/images/resort.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Bicycle",
-    "price": 3500,
-    "img": "/images/bike.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Umbrella",
-    "price": 120,
-    "img": "/images/umbrella.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Bag of Rice (25kg)",
-    "price": 1599,
-    "img": "/images/rice.png",
-    "quantity": "0"
-  },
-  {
-    "name": "Vespa Primavera S 150",
-    "price": 220000,
-    "img": "/images/vespa.png",
-    "quantity": "0"
-  }
-]
+{
+  "items": [
+    {
+      "name": "Jollibee Supermeal",
+      "price": 218,
+      "img": "/images/jollibee.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Coca-Cola Original Taste 1.5L",
+      "price": 75,
+      "oldPrice": 80,
+      "img": "/images/coke.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Pandesal (6 pcs)",
+      "price": 30,
+      "img": "/images/pandesal.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Gaming Setup",
+      "price": 68000,
+      "img": "/images/pc.png",
+      "quantity": "0"
+    },
+    {
+      "name": "iPhone 16 Pro Max",
+      "price": 89999,
+      "img": "/images/iphone.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Rice Cooker",
+      "price": 1200,
+      "img": "/images/rice-cooker.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Gasul Refill (11kg)",
+      "price": 980,
+      "img": "/images/gasul.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Electric Fan",
+      "price": 900,
+      "img": "/images/electric-fan.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Camella House and Lot, Cara Model",
+      "price": 6000000,
+      "img": "/images/house-and-lot.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Resort Property",
+      "price": 15000000,
+      "img": "/images/resort.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Bicycle",
+      "price": 3500,
+      "img": "/images/bike.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Umbrella",
+      "price": 120,
+      "img": "/images/umbrella.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Bag of Rice (25kg)",
+      "price": 1599,
+      "img": "/images/rice.png",
+      "quantity": "0"
+    },
+    {
+      "name": "Vespa Primavera S 150",
+      "price": 220000,
+      "img": "/images/vespa.png",
+      "quantity": "0"
+    }
+  ],
+  "politicians": [
+    {
+      "name": "Cynthia Villar",
+      "netWorth": "3875696435"
+    },
+    {
+      "name": "",
+      "netWorth": ""
+    }
+  ]
+}
