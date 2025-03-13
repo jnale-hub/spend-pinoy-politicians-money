@@ -36,3 +36,5 @@ Help me implement these fun features!!!
 ### [Share Purchases on Social Media](https://github.com/jnale-hub/spend-pinoy-politicians-money/issues/6)
 
 ### [UX/Design Improvements](https://github.com/jnale-hub/spend-pinoy-politicians-money/issues/7)
+
+This project was inspired by [Spend Bill Gates' Money](https://neal.fun/spend/)
