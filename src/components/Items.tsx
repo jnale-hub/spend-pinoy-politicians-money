@@ -1,9 +1,36 @@
+import { useEffect, useRef, useState } from "react";
 import { useMoney } from "../contexts/MoneyContext";
 import { formatMoney } from "../utils/formatMoney";
 import Button from "./Button";
 
 const Items = () => {
   const { items } = useMoney();
+  const [animatingItems, setAnimatingItems] = useState<{[key: number]: boolean}>({});
+  const prevQuantities = useRef<number[]>([]);
+
+  useEffect(() => {
+    // Initialize prev quantities on first render
+    if (prevQuantities.current.length === 0) {
+      prevQuantities.current = items.map(item => Number(item.quantity));
+      return;
+    }
+
+    // Compare current quantities with previous
+    items.forEach((item, index) => {
+      const currentQuantity = Number(item.quantity);
+      const prevQuantity = prevQuantities.current[index];
+
+      if (currentQuantity !== prevQuantity) {
+        setAnimatingItems(prev => ({ ...prev, [index]: true }));
+        setTimeout(() => {
+          setAnimatingItems(prev => ({ ...prev, [index]: false }));
+        }, 1000);
+      }
+    });
+
+    // Update previous quantities
+    prevQuantities.current = items.map(item => Number(item.quantity));
+  }, [items]);
 
   return (
     <div className="relative grid sm:gap-4 gap-3 grid-cols-2 md:grid-cols-3 px-1 sm:px-4">
@@ -23,7 +50,9 @@ const Items = () => {
               className="mx-auto aspect-square object-contain w-full"
             />
             <div className="sm:px-4 px-3 pt-4">
-              <h2 className="text-sm md:text-lg leading-tight mb-1">{item.name}</h2>
+              <h2 className="text-sm md:text-lg leading-tight mb-1">
+                {item.name}
+              </h2>
               <p className="text-orange-600 font-semibold tetxt-xl md:text-2xl break-words leading-tight">
                 {formatMoney(item.price)}
               </p>
@@ -49,8 +78,13 @@ const Items = () => {
               </div>
             </div>
             {Number(item.quantity) > 0 && (
-              <div className="absolute top-2 right-2 bg-red-500 text-white rounded-full size-6 flex items-center justify-center text-xs shadow-md">
-                {item.quantity}
+              <div className="absolute top-2 right-2">
+                {animatingItems[index] && (
+                  <div className="absolute animate-ping bg-red-500 rounded-full size-6 opacity-75"></div>
+                )}
+                <div className="relative bg-red-500 text-white rounded-full size-6 flex items-center justify-center text-xs shadow-md">
+                  {item.quantity}
+                </div>
               </div>
             )}
           </div>
