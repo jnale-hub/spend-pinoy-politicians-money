@@ -1,10 +1,11 @@
-import "./index.css";
-import Items from "./components/Items";
-import { MoneyProvider } from "./contexts/MoneyContext";
 import AccountLimit from "./components/AccountLimit";
-import { RemainingMoneyProvider } from "./contexts/RemainingMoneyContext";
-import Receipt from "./components/Receipt";
+import Items from "./components/Items";
 import PageHeader from "./components/PageHeader";
+import Receipt from "./components/Receipt";
+import { MoneyProvider } from "./contexts/MoneyContext";
+import { RemainingMoneyProvider } from "./contexts/RemainingMoneyContext";
+import "./index.css";
+
 
 function App() {
   return (
